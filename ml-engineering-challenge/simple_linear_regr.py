@@ -43,11 +43,11 @@ class SimpleLinearRegression:
             sets updated W and b to the instance Object (self)
         """
         # ToDo calculate dW & db.
-        dW = (-2/y.shape[0]) * np.sum(np.dot(X.T, (y - y_hat)))
-        db = (-2/y.shape[0]) * np.sum(y - y_hat)
+        dW = (-2 / y.shape[0]) * np.dot(X.T, (y - y_hat))
+        db = (-2 / y.shape[0]) * np.sum(y - y_hat)
         #  ToDO update the self.W and self.b using the learning rate and the values for dW and db
-        self.W = self.W - self.lr * dW
-        self.b = self.b - self.lr * db
+        self.W -= self.lr * dW
+        self.b -= self.lr * db
 
 
     def fit(self, X, y):
@@ -77,7 +77,7 @@ class SimpleLinearRegression:
         """
         #ToDO calculate the predicted output y_hat. remember the function of a line is defined as y = WX + b
         y_hat = np.dot(X, self.W) + self.b
-        return y_hat
+        return y_hat.reshape(-1, 1)
 
 
 if __name__ == "__main__":
